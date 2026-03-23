@@ -1,0 +1,11 @@
+# Model training dependencies
+# Install with: pip install -r requirements.txt
+
+ultralytics>=8.3.0       # YOLO11 — includes YOLO11m
+torch>=2.0.0             # PyTorch
+torchvision>=0.15.0      # Image transforms for custom dataloader
+Pillow>=9.0.0            # Image loading
+albumentations>=1.3.0    # Weather augmentation (fog, rain simulation)
+numpy>=1.23.0
+pyyaml>=6.0              # For reading bdd100k.yaml
+tqdm>=4.65.0             # Progress bars
