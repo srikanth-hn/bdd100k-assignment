@@ -1,0 +1,34 @@
+# ── Dataset (too large for git — download from Berkeley DeepDrive) ────────────
+BDD100k/images/
+BDD100k/labels_json/
+BDD100k/labels_yolo/
+BDD100k/labels
+
+# ── Model weights (binary files, re-downloadable / re-trainable) ──────────────
+model/yolo11m.pt
+model/yolo26n.pt
+model/bdd_exp/yolo11m_subset_proof/weights/
+model/bdd_exp/yolo11m_subset_proof6/
+
+# ── Python environment ────────────────────────────────────────────────────────
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Personal / assignment PDFs ────────────────────────────────────────────────
+*.pdf
+
+# ── Editor / OS ───────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ── Ultralytics cache / temp ─────────────────────────────────────────────────
+*.cache
+runs/

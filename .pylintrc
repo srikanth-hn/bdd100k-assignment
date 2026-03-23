@@ -1,0 +1,14 @@
+[MASTER]
+ignore=venv
+
+[MESSAGES CONTROL]
+disable=
+    missing-module-docstring,
+    missing-function-docstring,
+    too-few-public-methods
+
+[FORMAT]
+max-line-length=88
+
+[DESIGN]
+max-args=6
