@@ -1,0 +1,81 @@
+{
+  "model": "YOLO11m",
+  "weights": "bdd_exp/yolo11m_subset_proof/weights/best.pt",
+  "dataset": "BDD100K val split (9,999 images)",
+  "overall_metrics": {
+    "mAP50": 0.1658,
+    "mAP50_95": 0.1029,
+    "precision": 0.2528,
+    "recall": 0.0787
+  },
+  "per_class": {
+    "car": {
+      "ap50": 0.5241,
+      "train_count": 714121,
+      "avg_area_px": 9431,
+      "occlusion": 0.677
+    },
+    "traffic sign": {
+      "ap50": 0.215,
+      "train_count": 239961,
+      "avg_area_px": 1199,
+      "occlusion": 0.113
+    },
+    "traffic light": {
+      "ap50": 0.1964,
+      "train_count": 186301,
+      "avg_area_px": 507,
+      "occlusion": 0.032
+    },
+    "truck": {
+      "ap50": 0.5001,
+      "train_count": 30012,
+      "avg_area_px": 27804,
+      "occlusion": 0.655
+    },
+    "bus": {
+      "ap50": 0.0,
+      "train_count": 11688,
+      "avg_area_px": 35856,
+      "occlusion": 0.655
+    },
+    "rider": {
+      "ap50": 0.0,
+      "train_count": 4522,
+      "avg_area_px": 6310,
+      "occlusion": 0.892
+    },
+    "train": {
+      "ap50": 0.0,
+      "train_count": 136,
+      "avg_area_px": 38625,
+      "occlusion": 0.588
+    },
+    "person": {
+      "ap50": 0.2226,
+      "train_count": 0,
+      "avg_area_px": 0,
+      "occlusion": 0.0
+    },
+    "motor": {
+      "ap50": 0.0,
+      "train_count": 0,
+      "avg_area_px": 0,
+      "occlusion": 0.0
+    },
+    "bike": {
+      "ap50": 0.0,
+      "train_count": 0,
+      "avg_area_px": 0,
+      "occlusion": 0.0
+    }
+  },
+  "metrics_justification": {
+    "mAP50": "Primary BDD100K benchmark \u2014 IoU threshold 0.5",
+    "mAP50_95": "Stricter localisation quality \u2014 automotive safety",
+    "precision": "Minimise false positives \u2014 ADAS requirement",
+    "recall": "Minimise missed detections \u2014 safety critical",
+    "per_class": "Reveals rare class gaps critical for long-tail detection"
+  },
+  "training_note": "Results from 1-epoch subset training (5% data). Full 50-epoch training expected to reach mAP50 ~40-45%."
+}
