@@ -1,0 +1,225 @@
+{
+  "train": {
+    "total_objects": 1288405,
+    "total_images": 70000,
+    "class_counts": {
+      "car": 714121,
+      "traffic sign": 239961,
+      "traffic light": 186301,
+      "person": 91435,
+      "truck": 30012,
+      "bus": 11688,
+      "bike": 7227,
+      "rider": 4522,
+      "motor": 3002,
+      "train": 136
+    },
+    "weather_dist": {
+      "clear": 0.507644,
+      "overcast": 0.143727,
+      "undefined": 0.125017,
+      "snowy": 0.077395,
+      "partly cloudy": 0.075327,
+      "rainy": 0.069446,
+      "foggy": 0.001444
+    },
+    "timeofday_dist": {
+      "daytime": 0.567716,
+      "night": 0.356225,
+      "dawn/dusk": 0.075195,
+      "undefined": 0.000864
+    },
+    "scene_dist": {
+      "city street": 0.691221,
+      "highway": 0.197186,
+      "residential": 0.103606,
+      "parking lot": 0.00439,
+      "undefined": 0.002694,
+      "tunnel": 0.000683,
+      "gas stations": 0.00022
+    },
+    "avg_area_per_class": {
+      "bike": 5933.3,
+      "bus": 35855.79,
+      "car": 9431.47,
+      "motor": 7584.09,
+      "person": 2949.51,
+      "rider": 6309.72,
+      "traffic light": 507.23,
+      "traffic sign": 1198.85,
+      "train": 38624.72,
+      "truck": 27804.11
+    },
+    "median_area_per_class": {
+      "bike": 2466.28,
+      "bus": 6329.89,
+      "car": 1382.52,
+      "motor": 2485.49,
+      "person": 1075.79,
+      "rider": 1790.42,
+      "traffic light": 262.92,
+      "traffic sign": 444.23,
+      "train": 4962.9,
+      "truck": 5594.42
+    },
+    "occlusion_rate": 0.473007,
+    "truncation_rate": 0.069387,
+    "size_bucket_dist": {
+      "small": 0.804479,
+      "medium": 0.117663,
+      "large": 0.077858
+    },
+    "occlusion_per_class": {
+      "bike": 0.8382,
+      "bus": 0.6551,
+      "car": 0.6773,
+      "motor": 0.7652,
+      "person": 0.5802,
+      "rider": 0.8916,
+      "traffic light": 0.0318,
+      "traffic sign": 0.1125,
+      "train": 0.5882,
+      "truck": 0.6551
+    }
+  },
+  "val": {
+    "total_objects": 185578,
+    "total_images": 10000,
+    "class_counts": {
+      "car": 102540,
+      "traffic sign": 34915,
+      "traffic light": 26891,
+      "person": 13265,
+      "truck": 4247,
+      "bus": 1597,
+      "bike": 1007,
+      "rider": 649,
+      "motor": 452,
+      "train": 15
+    },
+    "weather_dist": {
+      "clear": 0.507463,
+      "overcast": 0.137608,
+      "undefined": 0.125753,
+      "partly cloudy": 0.079945,
+      "snowy": 0.076922,
+      "rainy": 0.071102,
+      "foggy": 0.001207
+    },
+    "timeofday_dist": {
+      "daytime": 0.568047,
+      "night": 0.350112,
+      "dawn/dusk": 0.080651,
+      "undefined": 0.001191
+    },
+    "scene_dist": {
+      "city street": 0.683923,
+      "highway": 0.196214,
+      "residential": 0.111597,
+      "parking lot": 0.004036,
+      "undefined": 0.002851,
+      "tunnel": 0.000916,
+      "gas stations": 0.000463
+    },
+    "avg_area_per_class": {
+      "bike": 5413.47,
+      "bus": 33675.08,
+      "car": 9385.91,
+      "motor": 7799.65,
+      "person": 2879.3,
+      "rider": 5971.18,
+      "traffic light": 497.39,
+      "traffic sign": 1193.27,
+      "train": 29394.24,
+      "truck": 27410.07
+    },
+    "median_area_per_class": {
+      "bike": 2446.77,
+      "bus": 5947.43,
+      "car": 1365.2,
+      "motor": 2595.92,
+      "person": 1082.11,
+      "rider": 1615.01,
+      "traffic light": 262.42,
+      "traffic sign": 446.83,
+      "train": 14426.14,
+      "truck": 5507.34
+    },
+    "occlusion_rate": 0.472497,
+    "truncation_rate": 0.068343,
+    "size_bucket_dist": {
+      "small": 0.807289,
+      "medium": 0.116539,
+      "large": 0.076173
+    },
+    "occlusion_per_class": {
+      "bike": 0.8808,
+      "bus": 0.6694,
+      "car": 0.6768,
+      "motor": 0.7456,
+      "person": 0.5801,
+      "rider": 0.8829,
+      "traffic light": 0.034,
+      "traffic sign": 0.1152,
+      "train": 0.8667,
+      "truck": 0.6525
+    }
+  },
+  "anomalies": [
+    "Severe class imbalance: 'train' is only 0.011% of train (136 objects)",
+    "Avg bbox area drift >20% for 'train': train=38625  val=29394"
+  ],
+  "imbalance": {
+    "ratio": 5250.9,
+    "majority_class": "car",
+    "minority_class": "train"
+  },
+  "saved_plots": [
+    "/results/class_dist.png",
+    "/results/spatial_heatmap.png",
+    "/results/train_val_class_comparison.png",
+    "/results/weather_distribution.png",
+    "/results/occlusion_per_class.png",
+    "/results/bbox_area_distribution.png",
+    "/results/size_bucket_distribution.png",
+    "/results/timeofday_distribution.png",
+    "/results/occlusion_by_weather_heatmap.png",
+    "/results/aspect_ratio_distribution.png",
+    "/results/train_val_abs_count_comparison.png",
+    "/results/spatial_heatmap_split_comparison.png"
+  ],
+  "class_counts": {
+    "car": 714121,
+    "traffic sign": 239961,
+    "traffic light": 186301,
+    "person": 91435,
+    "truck": 30012,
+    "bus": 11688,
+    "bike": 7227,
+    "rider": 4522,
+    "motor": 3002,
+    "train": 136
+  },
+  "weather_dist": {
+    "clear": 0.507644,
+    "overcast": 0.143727,
+    "undefined": 0.125017,
+    "snowy": 0.077395,
+    "partly cloudy": 0.075327,
+    "rainy": 0.069446,
+    "foggy": 0.001444
+  },
+  "avg_area_per_class": {
+    "bike": 5933.3,
+    "bus": 35855.79,
+    "car": 9431.47,
+    "motor": 7584.09,
+    "person": 2949.51,
+    "rider": 6309.72,
+    "traffic light": 507.23,
+    "traffic sign": 1198.85,
+    "train": 38624.72,
+    "truck": 27804.11
+  },
+  "occlusion_rate": 0.473007
+}
