@@ -81,29 +81,8 @@ bdd100k-assignment/
 
 ---
 
-## Setup
+Python 3.9+ is used in the setup
 
-### Prerequisites
-
-- Python 3.9+
-- Docker Desktop (for data analysis)
-- NVIDIA GPU with CUDA (for model training and evaluation)
-- BDD100K dataset from https://bdd-data.berkeley.edu/
-  - Download: 100K Images (5.3GB) and Labels (107MB)
-
-### Expected dataset structure on your machine
-
-```
-BDD100k/
-  images/
-    train/    # 70,000 images
-    val/      # 10,000 images
-  labels/
-    train/    # per-image JSON annotation files
-    val/
-```
-
----
 
 ## Step 1 — Data Analysis
 
@@ -161,9 +140,7 @@ normalised centre (cx/cy), and size bucket (small/medium/large).
 
 The 10 official detection classes are filtered using confirmed JSON category
 strings: `car`, `traffic sign`, `traffic light`, `truck`, `bus`, `train`,
-`rider`, `person`, `motor`, `bike`. Note that BDD100K uses `person` (not
-`pedestrian`), `motor` (not `motorcycle`), and `bike` (not `bicycle`) — these
-were discovered via a category audit script and corrected in the parser.
+`rider`, `person`, `motor`, `bike`.
 
 ### Key findings
 
@@ -219,7 +196,7 @@ with 22% fewer parameters — better accuracy and better efficiency. For an
 automotive perception task where both accuracy and inference speed matter,
 this is the right balance.
 
-The medium (`m`) variant was chosen because the RTX A3000 (6GB VRAM) can
+The medium (`m`) variant was chosen because  my system has the RTX A3000 (6GB VRAM) and it can
 run it at imgsz=1280 — critical for detecting small objects. Larger variants
 (l, x) require 16GB+ VRAM. Smaller variants (n, s) underperform on the 80%
 small-object prevalence found in BDD100K data analysis.
@@ -281,7 +258,7 @@ python train.py --mode full
 python train.py --mode resume --weights bdd_exp/yolo11m_bdd100k_full/weights/last.pt
 ```
 
-### Custom dataloader (bonus +5 points)
+### Custom dataloader
 
 `model/dataset.py` implements a custom PyTorch `Dataset` and `DataLoader`
 for BDD100K in YOLO label format. Key design decisions:
@@ -379,35 +356,7 @@ drift between splits compounds this.
 average area. At 640px input, traffic lights occupy approximately 3-4 pixels.
 Full training at imgsz=1280 will be the primary fix for this class.
 
-**`motor` and `bike` (0.0%)** — these classes use non-standard JSON
-category strings that required a parser fix. Even after correction, insufficient
-training has been done on these visually complex classes.
-
-### Failure pattern clustering
-
-Three distinct failure clusters emerge from connecting evaluation to data analysis:
-
-1. **Rare class failure** — train, motor, bike: fewer than 500 training samples.
-   The model has not seen enough instances to learn. Fix: weighted sampling,
-   copy_paste augmentation specifically targeting these classes.
-
-2. **High occlusion failure** — bus, rider: 65-89% occlusion rate.
-   Predicted bounding box area is too small for confident detection.
-   Fix: more training epochs, soft-NMS, and occlusion-aware augmentation.
-
-3. **Small object failure** — traffic light: 507px2 average area.
-   Near-invisible at imgsz=640. Fix: imgsz=1280 in full training.
-
-### Suggested improvements
-
-| Priority | Improvement | Evidence from data analysis |
-|----------|-------------|----------------------------|
-| High | Full 50-epoch training | Current results from 1 epoch / 5% data |
-| High | imgsz=1280 for full training | Traffic light avg area 507px2 |
-| High | Weighted sampler for rare classes | train=136, motor/bike near zero |
-| Medium | copy_paste=0.8 for rare classes | 5,250x imbalance |
-| Medium | Albumentations fog/rain augmentation | 0.15% foggy images — underrepresented |
-| Low | CBAM attention in neck | Spatial heatmap shows centre bias |
+**`motor` and `bike` (0.0%)** — insufficient training has been done on these visually complex classes.
 
 ### Qualitative visualization tool
 
@@ -449,4 +398,3 @@ demonstrates the value of thorough dataset analysis before model selection.
 
 - BDD100K: Yu et al. 2020 — https://bdd-data.berkeley.edu/
 - YOLO11: Ultralytics, September 2024
-- Assignment: Bosch Global Software Technologies MS/EXV-XC v1.1.2
