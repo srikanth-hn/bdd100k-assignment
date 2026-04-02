@@ -168,10 +168,15 @@ area is 38,625px2 in training but only 29,394px2 in validation (a >20% drop).
 This means the model's learned size prior will not match validation statistics,
 causing localisation errors even when the class is correctly identified.
 
-**Anomaly 3 — Category string mismatch:** Three classes (`person`, `motor`,
-`bike`) use non-standard strings in BDD100K JSON files. These were initially
-missing from analysis results, discovered via a category audit, and fixed in
-the parser.
+**Anomaly 3 — Occlusion:**. Extreme Per-Class Occlusion Rates
+What: Occlusion is not uniform across classes — it ranges from 3.2% to 89.2%:
+
+Class	Occlusion rate
+rider	89.2% — almost always hidden behind their vehicle
+bike	83.8%
+motor	76.5%
+car	67.7%
+traffic light	3.2% — almost never occluded
 
 ### Interesting / unique patterns
 
