@@ -169,8 +169,7 @@ This means the model's learned size prior will not match validation statistics,
 causing localisation errors even when the class is correctly identified.
 
 **Anomaly 3 — Occlusion:**. Extreme Per-Class Occlusion Rates
-What: Occlusion is not uniform across classes — it ranges from 3.2% to 89.2%:
-
+Occlusion is not uniform across classes it ranges from 3.2% to 89.2%:
 Class	Occlusion rate
 rider	89.2% — almost always hidden behind their vehicle
 bike	83.8%
